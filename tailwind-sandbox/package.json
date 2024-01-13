@@ -1,0 +1,29 @@
+{
+  "name": "tailwind-sandbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "npm-watch": "^0.11.0"
+  },
+  "description": "",
+  "scripts": {
+    "build:style1": "tailwindcss build -i ./hello-world/input.css -o ./hello-world/output.css -v",
+    "build:style2": "tailwindcss build -i ./blog-example/input.css -o ./blog-example/output.css -v",
+    "build": "npm run build:style1 && npm run build:style2",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "./**/*"
+      ],
+      "extensions": "js,css,html"
+    }
+  }
+}
