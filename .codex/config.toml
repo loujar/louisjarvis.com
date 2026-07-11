@@ -1,0 +1,19 @@
+# Fully automatic approvals for Node.js command execution, with network
+# access narrowly scoped to the npm registry (no wildcard network access).
+
+approval_policy = "never"
+default_permissions = "node-dev"
+
+[permissions.node-dev]
+description = "Workspace write access with npm registry network access for Node.js development."
+extends = ":workspace"
+
+[permissions.node-dev.filesystem.":workspace_roots"]
+"**/*.env" = "deny"
+
+[permissions.node-dev.network]
+enabled = true
+
+[permissions.node-dev.network.domains]
+"registry.npmjs.org" = "allow"
+"*.npmjs.org" = "allow"
