@@ -1,0 +1,508 @@
+/* ============================================================
+   Variant 01 — Abyssal Glass
+   Motion + Layout + Component Styles
+   ============================================================ */
+
+/* --- Background Canvas --- */
+.caustics-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- Wave Transition Overlay --- */
+.wave-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, transparent 0%, var(--color-accent-seafoam) 50%, transparent 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-fast) ease;
+}
+.wave-transition.active {
+  opacity: 0.15;
+}
+
+/* --- Header --- */
+.glass-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(3, 19, 31, 0.65);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: var(--header-height);
+}
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+.logo:hover {
+  color: var(--color-accent-seafoam);
+}
+
+/* --- Tab Nav --- */
+.tab-nav {
+  display: flex;
+  gap: 4px;
+}
+.tab-link {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  transition: all var(--motion-fast) ease;
+}
+.tab-link:hover {
+  color: var(--color-text-primary);
+  background: rgba(98, 214, 200, 0.08);
+}
+.tab-link.active {
+  color: var(--color-accent-seafoam);
+  background: rgba(98, 214, 200, 0.12);
+}
+
+/* --- Main Content --- */
+.app-main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  padding: 48px 24px 80px;
+}
+.content-container {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- Glass Panels --- */
+.glass-panel {
+  background: var(--color-bg-surface);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-panel);
+  padding: 48px;
+  box-shadow: var(--shadow-panel);
+  animation: panelEnter var(--motion-medium) cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes panelEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Home Tab --- */
+.home-panel {
+  text-align: center;
+}
+.home-name {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-accent-seafoam) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.home-headline {
+  font-size: 1.3rem;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+.home-location {
+  color: var(--color-accent-gold);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+.home-bio {
+  color: var(--color-text-muted);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* --- Buttons --- */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: rgba(98, 214, 200, 0.06);
+  border: 1px solid var(--color-border-soft);
+  color: var(--color-text-primary);
+  transition: all var(--motion-fast) ease;
+}
+.glass-btn:hover {
+  background: rgba(98, 214, 200, 0.14);
+  border-color: var(--color-accent-seafoam);
+  transform: translateY(-1px);
+}
+.glass-btn.primary {
+  background: linear-gradient(135deg, var(--color-accent-seafoam), #4abdb0);
+  color: var(--color-bg-deep);
+  border-color: transparent;
+}
+.glass-btn.primary:hover {
+  box-shadow: 0 8px 24px rgba(98, 214, 200, 0.3);
+}
+
+/* --- Section Title --- */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* --- Resume --- */
+.resume-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+.resume-role {
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(8, 24, 38, 0.5);
+  border: 1px solid var(--color-border-soft);
+  transition: border-color var(--motion-fast) ease;
+}
+.resume-role:hover {
+  border-color: rgba(98, 214, 200, 0.3);
+}
+.resume-role.featured {
+  border-left: 3px solid var(--color-accent-seafoam);
+}
+.resume-role-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+}
+.resume-role-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.resume-company {
+  color: var(--color-accent-seafoam);
+  font-weight: 500;
+}
+.resume-dates {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+.resume-location {
+  color: var(--color-accent-gold);
+  font-size: 0.85rem;
+}
+.resume-bullets {
+  list-style: none;
+  margin: 12px 0 16px;
+  padding: 0;
+}
+.resume-bullets li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.resume-bullets li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-seafoam);
+}
+.resume-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.tech-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  border-radius: 6px;
+  background: rgba(98, 214, 200, 0.08);
+  color: var(--color-accent-seafoam);
+  border: 1px solid rgba(98, 214, 200, 0.15);
+}
+.resume-skills {
+  margin-bottom: 40px;
+}
+.resume-skills h3 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.resume-education {
+  margin-bottom: 32px;
+}
+.resume-education h3 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+.edu-item {
+  padding: 12px 0;
+  color: var(--color-text-muted);
+}
+.edu-item strong {
+  color: var(--color-text-primary);
+}
+
+/* --- Bio --- */
+.bio-para {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+.bio-highlights {
+  margin-top: 40px;
+}
+.bio-highlights h3 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+.bio-highlights ul {
+  list-style: none;
+  padding: 0;
+}
+.bio-highlights li {
+  padding: 10px 0;
+  padding-left: 24px;
+  position: relative;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.bio-highlights li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-gold);
+  font-size: 0.7rem;
+  top: 14px;
+}
+
+/* --- Photography --- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+.photo-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-bg-surface-solid);
+  border: 1px solid var(--color-border-soft);
+  transition: all var(--motion-fast) ease;
+  text-align: left;
+}
+.photo-card:hover {
+  border-color: var(--color-accent-seafoam);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+.photo-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.photo-card-info {
+  padding: 12px 16px;
+}
+.photo-card-info strong {
+  display: block;
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+}
+.photo-card-info span {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+/* --- Photo Modal --- */
+.photo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn var(--motion-fast) ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.photo-modal {
+  max-width: 600px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  background: var(--color-bg-surface-solid);
+  border: 1px solid var(--color-border-soft);
+  padding: 0;
+  animation: modalSlide var(--motion-medium) cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes modalSlide {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.photo-modal img {
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+}
+.photo-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background var(--motion-fast) ease;
+}
+.photo-modal-close:hover {
+  background: var(--color-accent-coral);
+}
+.photo-modal-info {
+  padding: 24px;
+}
+.photo-modal-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.photo-modal-location {
+  color: var(--color-accent-gold);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+.photo-modal-blurb {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.photo-modal-camera {
+  color: var(--color-accent-seafoam);
+  font-size: 0.8rem;
+}
+
+/* --- Links --- */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.glass-link-card {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  border-radius: 14px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-soft);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--motion-fast) ease;
+}
+.glass-link-card:hover {
+  border-color: var(--color-accent-seafoam);
+  transform: translateY(-2px);
+}
+.glass-link-card strong {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+
+/* --- Footer --- */
+.glass-footer {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--color-border-soft);
+  background: rgba(3, 19, 31, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+  .tab-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .glass-panel {
+    padding: 24px;
+  }
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+  .resume-role-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .wave-transition {
+    transition: none;
+  }
+  .glass-panel,
+  .photo-modal {
+    animation: none;
+  }
+  .photo-card:hover,
+  .glass-btn:hover,
+  .glass-link-card:hover {
+    transform: none;
+  }
+}
