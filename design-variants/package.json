@@ -1,0 +1,15 @@
+{
+  "name": "louisjarvis-design-variants",
+  "private": true,
+  "version": "0.1.0",
+  "description": "10 website design variants for louisjarvis.com — React + Vite + TypeScript SPAs with nautical/ocean aesthetic",
+  "license": "MIT",
+  "scripts": {
+    "dev": "echo 'Run from a variant directory: cd 01-abyssal-glass && pnpm dev'",
+    "build:all": "for d in 0*; do echo \"Building $d...\"; cd \"$d\" && pnpm build && cd ..; done",
+    "lint:all": "for d in 0*; do echo \"Linting $d...\"; cd \"$d\" && pnpm lint && cd ..; done"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
