@@ -1,0 +1,23 @@
+:root {
+  --color-bg-deep: #0a1420;
+  --color-bg-surface: rgba(14, 28, 44, 0.82);
+  --color-bg-surface-solid: #0e1c2c;
+  --color-text-primary: #dce8f5;
+  --color-text-muted: #7a9ab4;
+  --color-accent-seafoam: #4db8d8;
+  --color-accent-coral: #e87858;
+  --color-accent-gold: #d4b06a;
+  --color-accent-current: #5fc8e8;
+  --color-border-soft: rgba(95, 200, 232, 0.14);
+  --shadow-panel: 0 20px 60px rgba(0, 0, 0, 0.4);
+  --radius-panel: 16px;
+  --motion-fast: 180ms;
+  --motion-medium: 400ms;
+  --motion-slow: 1200ms;
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --max-width: 1100px;
+  --header-height: 64px;
+}
